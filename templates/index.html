@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta tags for character encoding and responsiveness -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Prediction</title>
+    
+    <!-- Link to the external stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Main header for the page -->
+        <h1>House Price Prediction</h1>
+        
+        <!-- Card section for input fields -->
+        <div class="input-card card">
+            <h2>Enter Property Details</h2>
+
+            <!-- Longitude input field -->
+            <div class="input-field">
+                <label for="longitude">Longitude:</label>
+                <input type="number" id="longitude" name="longitude" placeholder="Enter longitude">
+            </div>
+
+            <!-- Latitude input field -->
+            <div class="input-field">
+                <label for="latitude">Latitude:</label>
+                <input type="number" id="latitude" name="latitude" placeholder="Enter latitude">
+            </div>
+
+            <!-- Housing Median Age input field -->
+            <div class="input-field">
+                <label for="housing_median_age">Housing Median Age:</label>
+                <input type="number" id="housing_median_age" name="housing_median_age" placeholder="Enter age">
+            </div>
+
+            <!-- Total Rooms input field -->
+            <div class="input-field">
+                <label for="total_rooms">Total Rooms:</label>
+                <input type="number" id="total_rooms" name="total_rooms" placeholder="Enter total rooms">
+            </div>
+
+            <!-- Total Bedrooms input field -->
+            <div class="input-field">
+                <label for="total_bedrooms">Total Bedrooms:</label>
+                <input type="number" id="total_bedrooms" name="total_bedrooms" placeholder="Enter total bedrooms">
+            </div>
+
+            <!-- Population input field -->
+            <div class="input-field">
+                <label for="population">Population:</label>
+                <input type="number" id="population" name="population" placeholder="Enter population">
+            </div>
+
+            <!-- Households input field -->
+            <div class="input-field">
+                <label for="households">Households:</label>
+                <input type="number" id="households" name="households" placeholder="Enter households">
+            </div>
+
+            <!-- Median Income input field with step for decimal precision -->
+            <div class="input-field">
+                <label for="median_income">Median Income:</label>
+                <input type="number" step="0.01" id="median_income" name="median_income" placeholder="Enter median income">
+            </div>
+
+            <!-- Button to trigger the prediction -->
+            <button id="predictBtn">Predict Price</button>
+        </div>
+
+        <!-- Section to display the result -->
+        <div id="result" class="result-card card" style="display:none;">
+            <h2>Predicted House Price</h2>
+            <p id="price"></p>
+        </div>
+    </div>
+
+    <!-- JavaScript to handle form submission and display the prediction result -->
+    <script>
+        document.getElementById('predictBtn').addEventListener('click', async () => {
+            // Collect input data from the form
+            const data = {
+                longitude: document.getElementById('longitude').value,
+                latitude: document.getElementById('latitude').value,
+                housing_median_age: document.getElementById('housing_median_age').value,
+                total_rooms: document.getElementById('total_rooms').value,
+                total_bedrooms: document.getElementById('total_bedrooms').value,
+                population: document.getElementById('population').value,
+                households: document.getElementById('households').value,
+                median_income: document.getElementById('median_income').value,
+            };
+
+            try {
+                // Send POST request to the server with the input data
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+            
+                // Parse the JSON response
+                const result = await response.json();
+                
+
+                // Display the predicted price if available, otherwise show an error
+                if (result.price) {
+                    document.getElementById('price').textContent = `Predicted Price: $${result.price.toFixed(2)}`;
+                } else {
+                    document.getElementById('price').textContent = `Error: ${result.error}`;
+                }
+
+                // Show the result section
+                document.getElementById('result').style.display = 'block';
+
+            } catch (error) {
+                console.error('Error fetching the prediction:', error);
+            }
+        }
+    );
+    </script>
+</body>
+
+</html>

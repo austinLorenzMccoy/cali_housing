@@ -1,0 +1,89 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif; /* Set the default font */
+    background-color: #eaeaea; /* Light background color for the page */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+/* Container to centralize the content */
+.container {
+    width: 90%; /* Responsive width */
+    max-width: 800px; /* Max width of 800px */
+    margin: auto; /* Center the container */
+    padding: 20px; /* Padding inside the container */
+}
+
+/* Main heading styling */
+h1 {
+    text-align: center; /* Center align the heading */
+    color: #333; /* Dark text color */
+}
+
+/* General card styling for input and result sections */
+.card {
+    background: #fff; /* White background for the card */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+    padding: 20px; /* Padding inside the card */
+    margin-bottom: 20px; /* Space below each card */
+}
+
+/* Styling for headings inside the input and result cards */
+.input-card h2, .result-card h2 {
+    font-size: 1.5em; /* Slightly larger font size */
+    margin-top: 0; /* Remove top margin */
+    color: #444; /* Slightly lighter text color */
+}
+
+/* Input field wrapper styling */
+.input-field {
+    margin-bottom: 15px; /* Space between input fields */
+}
+
+/* Label styling */
+.input-field label {
+    display: block; /* Display label as a block element */
+    margin-bottom: 5px; /* Small space below the label */
+    font-weight: bold; /* Bold text for labels */
+}
+
+/* Input styling */
+.input-field input {
+    width: calc(100% - 20px); /* Full width minus padding */
+    padding: 10px; /* Padding inside the input box */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+}
+
+/* Button styling */
+button {
+    background-color: #4CAF50; /* Green background */
+    color: #fff; /* White text */
+    border: none; /* Remove border */
+    padding: 12px 20px; /* Padding inside the button */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Show pointer on hover */
+    font-size: 1em; /* Standard font size */
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Styling for the result card */
+.result-card {
+    background: #f9f9f9; /* Light background color */
+    border: 1px solid #ddd; /* Light gray border */
+    padding: 20px; /* Padding inside the card */
+    text-align: center; /* Center align the text */
+}
+
+/* Styling for the result paragraph */
+.result-card p {
+    font-size: 1.5em; /* Larger font for emphasis */
+    font-weight: bold; /* Bold text */
+    color: #333; /* Dark text color */
+}
