@@ -1,0 +1,10 @@
+branch-defaults:
+  master:
+    environment: linear-regression-app-env
+  global:
+    application_name: linear-regression-app
+    default_ec2_keyname: aws-eb
+    default_platform: Python 3.12
+    region: us-east-1
+    profile: eb-cli
+    workspace_type: Application
